@@ -1,0 +1,23 @@
+{
+  "name": "miniprogram-photobrowser",
+  "version": "1.0.1",
+  "description": "Based on the swiper,miniprogram-photobrowser",
+  "main": "src/index.js",
+  "miniprogram":"src",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Projects-Weixin/miniprogram-photobrowser.git"
+  },
+  "author": "mf",
+  "license": "ISC",
+  "keywords": [
+    "miniprogram-photobrowser"
+  ],
+  "bugs": {
+    "url": "https://github.com/Projects-Weixin/miniprogram-photobrowser/issues"
+  },
+  "homepage": "https://github.com/Projects-Weixin/miniprogram-photobrowser#readme"
+}

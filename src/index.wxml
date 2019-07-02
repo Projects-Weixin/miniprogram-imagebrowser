@@ -1,0 +1,42 @@
+<!--pages/components/photobrowser/photobrowser.wxml-->
+<view class='photo-browser-page' wx:if='{{!isPhotoBrowserHidden}}'>
+  <!-- 浏览器 -->
+  <view class='swiperView' style='height:{{height}}px' catchtap='photoBrowserClick' data-hidden='true'>
+    <swiper class='swiper' style='height:{{height}}px' current='{{cur}}' bindchange='bindchange'>
+      <swiper-item wx:for='{{pics}}' wx:for-item='item' wx:for-index='index' wx:key='{{item.id}}'>
+        <image class='image' style='height:{{height}}px' mode='aspectFit' lazy-load='true' bindload='eventhandle' src='{{item.filePath}}'>
+        </image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- toolbar -->
+  <view class='toolbar' style='width:{{width-16*2}}px'>
+    <view class="btnView" catchtap="showActionSheet" data-hidden='false' data-current='{{cur}}'>
+      {{cur+1}}/{{pics.length}}
+    </view>
+    <view class="btnView {{pics[cur].isQuestion=='1' ? 'selectedViewBtn': '' }}" wx:if='{{!hideMarkBtn}}' catchtap='unstudiedClick'>
+      不懂
+    </view>
+
+  </view>
+
+  <!-- 页面选择器 -->
+  <view class='action-sheet-page' catchtap="hideActionSheet" data-hidden='true' wx:if='{{!isActionSheetHidden}}'>
+    <scroll-view scroll-y='true' style="height:{{pics.length*40>height/2 ? height/2 : pics.length*40}}px" class='actionSheetView'>
+      <block wx:for='{{pics}}' wx:for-item='item' wx:for-index='index' wx:key='{{item.id}}'>
+        <view class='actionSheetItemView' data-hidden='true' data-current='{{index}}' catchtap="actionSheetClick">
+          <view class='actionSheetItem'>第 {{index+1}} 页</view>
+          <view class='currentPoint' hidden='{{index!=cur}}'></view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <movable-area style="width:{{width}}px;height:{{height}}px; background-color: red;" scale-area overflow:hidden wx:if='{{isPreview}}' catchtap='previewClick' data-hidden='false'>
+    <movable-view class='preview' style="width:{{width}}px;height:{{height}}px background-color: blue;" out-of-bounds='true' direction="all" bindchange="onImageChange" bindscale="onImageScale" scale scale-min="1" scale-max="3" scale-value="1">
+      <image class='image' style='height:{{height}}px' mode='aspectFit' lazy-load='true' bindload='eventhandle' src='{{imageUrl}}'>
+      </image>
+    </movable-view>
+  </movable-area>
+</view>
