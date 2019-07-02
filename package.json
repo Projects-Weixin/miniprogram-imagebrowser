@@ -1,6 +1,6 @@
 {
   "name": "miniprogram-photobrowser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Based on the swiper,miniprogram-photobrowser",
   "main": "src/index.js",
   "miniprogram":"src",
